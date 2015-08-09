@@ -1,6 +1,11 @@
+require_relative 'memorable'
+
 class Artist
-  attr_accessor :name
-  attr_reader :songs
+
+  extend Memorable::ClassMethods
+
+  attr_accessor :name, :songs
+
   @@artists = []
 
   def self.find_by_name(name)
@@ -16,13 +21,13 @@ class Artist
     @@artists
   end
 
-  def self.reset_all
-    self.all.clear
-  end
+  # def self.reset_all
+  #   self.all.clear
+  # end
 
-  def self.count
-    @@artists.count
-  end
+  # def self.count
+  #   @@artists.count
+  # end
 
   def add_song(song)
     @songs << song
